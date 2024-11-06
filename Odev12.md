@@ -5,4 +5,4 @@
 3. film tablosunda en düşük rental_rate ve en düşün replacement_cost değerlerine sahip filmleri sıralayınız.
 - SELECT COUNT(film) FROM film WHERE rental_rate = aLL( SELECT MIN(film.rental_rate) FROM film) and replacement_cost = aLL( SELECT MIN(film.replacement_cost) FROM film);
 4. payment tablosunda en fazla sayıda alışveriş yapan müşterileri(customer) sıralayınız.
-- SELECT * FROM customer WHERE customer_id = ANY (SELECT customer_id FROM payment GROUP BY customer_id ORDER BY COUNT(*) DESC LIMIT 1);
+- SELECT customer.customer_id,customer.first_name,customer.last_name,COUNT(*) FROM customer INNER JOIN payment ON customer.customer_id=payment.customer_id GROUP BY customer.customer_id ORDER BY COUNT(*) DESC;
